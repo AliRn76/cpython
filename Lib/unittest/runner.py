@@ -38,7 +38,7 @@ class TextTestResult(result.TestResult):
     def __init__(self, stream, descriptions, verbosity, *, durations=None):
         """Construct a TextTestResult. Subclasses should accept **kwargs
         to ensure compatibility as the interface changes."""
-        super(TextTestResult, self).__init__(stream, descriptions, verbosity)
+        super().__init__(stream, descriptions, verbosity)
         self.stream = stream
         self.showAll = verbosity > 1
         self.dots = verbosity == 1
@@ -54,7 +54,7 @@ class TextTestResult(result.TestResult):
             return str(test)
 
     def startTest(self, test):
-        super(TextTestResult, self).startTest(test)
+        super().startTest(test)
         if self.showAll:
             self.stream.write(self.getDescription(test))
             self.stream.write(" ... ")
@@ -87,10 +87,10 @@ class TextTestResult(result.TestResult):
                 else:
                     self.stream.write('E')
                 self.stream.flush()
-        super(TextTestResult, self).addSubTest(test, subtest, err)
+        super().addSubTest(test, subtest, err)
 
     def addSuccess(self, test):
-        super(TextTestResult, self).addSuccess(test)
+        super().addSuccess(test)
         if self.showAll:
             self._write_status(test, "ok")
         elif self.dots:
@@ -98,7 +98,7 @@ class TextTestResult(result.TestResult):
             self.stream.flush()
 
     def addError(self, test, err):
-        super(TextTestResult, self).addError(test, err)
+        super().addError(test, err)
         if self.showAll:
             self._write_status(test, "ERROR")
         elif self.dots:
@@ -106,7 +106,7 @@ class TextTestResult(result.TestResult):
             self.stream.flush()
 
     def addFailure(self, test, err):
-        super(TextTestResult, self).addFailure(test, err)
+        super().addFailure(test, err)
         if self.showAll:
             self._write_status(test, "FAIL")
         elif self.dots:
@@ -114,7 +114,7 @@ class TextTestResult(result.TestResult):
             self.stream.flush()
 
     def addSkip(self, test, reason):
-        super(TextTestResult, self).addSkip(test, reason)
+        super().addSkip(test, reason)
         if self.showAll:
             self._write_status(test, "skipped {0!r}".format(reason))
         elif self.dots:
@@ -122,7 +122,7 @@ class TextTestResult(result.TestResult):
             self.stream.flush()
 
     def addExpectedFailure(self, test, err):
-        super(TextTestResult, self).addExpectedFailure(test, err)
+        super().addExpectedFailure(test, err)
         if self.showAll:
             self.stream.writeln("expected failure")
             self.stream.flush()
@@ -131,7 +131,7 @@ class TextTestResult(result.TestResult):
             self.stream.flush()
 
     def addUnexpectedSuccess(self, test):
-        super(TextTestResult, self).addUnexpectedSuccess(test)
+        super().addUnexpectedSuccess(test)
         if self.showAll:
             self.stream.writeln("unexpected success")
             self.stream.flush()

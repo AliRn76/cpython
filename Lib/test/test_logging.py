@@ -964,7 +964,7 @@ class ControlMixin(object):
         service loop.
         """
         self.ready.set()
-        super(ControlMixin, self).serve_forever(poll_interval)
+        super().serve_forever(poll_interval)
 
     def stop(self):
         """
@@ -1046,7 +1046,7 @@ class TestTCPServer(ControlMixin, ThreadingTCPServer):
         ControlMixin.__init__(self, handler, poll_interval)
 
     def server_bind(self):
-        super(TestTCPServer, self).server_bind()
+        super().server_bind()
         self.port = self.socket.getsockname()[1]
 
 class TestUDPServer(ControlMixin, ThreadingUDPServer):
@@ -1089,11 +1089,11 @@ class TestUDPServer(ControlMixin, ThreadingUDPServer):
         self._closed = False
 
     def server_bind(self):
-        super(TestUDPServer, self).server_bind()
+        super().server_bind()
         self.port = self.socket.getsockname()[1]
 
     def server_close(self):
-        super(TestUDPServer, self).server_close()
+        super().server_close()
         self._closed = True
 
 if hasattr(socket, "AF_UNIX"):
@@ -2118,11 +2118,11 @@ class IPv6SysLogHandlerTest(SysLogHandlerTest):
 
     def setUp(self):
         self.server_class.address_family = socket.AF_INET6
-        super(IPv6SysLogHandlerTest, self).setUp()
+        super().setUp()
 
     def tearDown(self):
         self.server_class.address_family = socket.AF_INET
-        super(IPv6SysLogHandlerTest, self).tearDown()
+        super().tearDown()
 
 @support.requires_working_socket()
 @threading_helper.requires_working_threading()
@@ -4594,7 +4594,7 @@ class FakeHandler:
 class RecordingHandler(logging.NullHandler):
 
     def __init__(self, *args, **kwargs):
-        super(RecordingHandler, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.records = []
 
     def handle(self, record):
@@ -4607,7 +4607,7 @@ class ShutdownTest(BaseTest):
     """Test suite for the shutdown method."""
 
     def setUp(self):
-        super(ShutdownTest, self).setUp()
+        super().setUp()
         self.called = []
 
         raise_exceptions = logging.raiseExceptions
@@ -5022,7 +5022,7 @@ class BasicConfigTest(unittest.TestCase):
     """Test suite for logging.basicConfig."""
 
     def setUp(self):
-        super(BasicConfigTest, self).setUp()
+        super().setUp()
         self.handlers = logging.root.handlers
         self.saved_handlers = logging._handlers.copy()
         self.saved_handler_list = logging._handlerList[:]
@@ -5034,7 +5034,7 @@ class BasicConfigTest(unittest.TestCase):
         for h in logging.root.handlers[:]:
             logging.root.removeHandler(h)
             h.close()
-        super(BasicConfigTest, self).tearDown()
+        super().tearDown()
 
     def cleanup(self):
         setattr(logging.root, 'handlers', self.handlers)
@@ -5367,7 +5367,7 @@ class BasicConfigTest(unittest.TestCase):
 
 class LoggerAdapterTest(unittest.TestCase):
     def setUp(self):
-        super(LoggerAdapterTest, self).setUp()
+        super().setUp()
         old_handler_list = logging._handlerList[:]
 
         self.recording = RecordingHandler()
@@ -5516,7 +5516,7 @@ class LoggerAdapterTest(unittest.TestCase):
 class LoggerTest(BaseTest, AssertErrorMessage):
 
     def setUp(self):
-        super(LoggerTest, self).setUp()
+        super().setUp()
         self.recording = RecordingHandler()
         self.logger = logging.Logger(name='blah')
         self.logger.addHandler(self.recording)

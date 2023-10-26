@@ -75,22 +75,22 @@ class _AsCompletedWaiter(_Waiter):
     """Used by as_completed()."""
 
     def __init__(self):
-        super(_AsCompletedWaiter, self).__init__()
+        super().__init__()
         self.lock = threading.Lock()
 
     def add_result(self, future):
         with self.lock:
-            super(_AsCompletedWaiter, self).add_result(future)
+            super().add_result(future)
             self.event.set()
 
     def add_exception(self, future):
         with self.lock:
-            super(_AsCompletedWaiter, self).add_exception(future)
+            super().add_exception(future)
             self.event.set()
 
     def add_cancelled(self, future):
         with self.lock:
-            super(_AsCompletedWaiter, self).add_cancelled(future)
+            super().add_cancelled(future)
             self.event.set()
 
 class _FirstCompletedWaiter(_Waiter):

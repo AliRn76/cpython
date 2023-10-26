@@ -331,7 +331,7 @@ class AuditEventListDirective(Directive):
 
 class PyDecoratorMixin(object):
     def handle_signature(self, sig, signode):
-        ret = super(PyDecoratorMixin, self).handle_signature(sig, signode)
+        ret = super().handle_signature(sig, signode)
         signode.insert(0, addnodes.desc_addname('@', '@'))
         return ret
 
@@ -355,14 +355,14 @@ class PyDecoratorMethod(PyDecoratorMixin, PyMethod):
 
 class PyCoroutineMixin(object):
     def handle_signature(self, sig, signode):
-        ret = super(PyCoroutineMixin, self).handle_signature(sig, signode)
+        ret = super().handle_signature(sig, signode)
         signode.insert(0, addnodes.desc_annotation('coroutine ', 'coroutine '))
         return ret
 
 
 class PyAwaitableMixin(object):
     def handle_signature(self, sig, signode):
-        ret = super(PyAwaitableMixin, self).handle_signature(sig, signode)
+        ret = super().handle_signature(sig, signode)
         signode.insert(0, addnodes.desc_annotation('awaitable ', 'awaitable '))
         return ret
 
@@ -394,7 +394,7 @@ class PyAwaitableMethod(PyAwaitableMixin, PyMethod):
 class PyAbstractMethod(PyMethod):
 
     def handle_signature(self, sig, signode):
-        ret = super(PyAbstractMethod, self).handle_signature(sig, signode)
+        ret = super().handle_signature(sig, signode)
         signode.insert(0, addnodes.desc_annotation('abstractmethod ',
                                                    'abstractmethod '))
         return ret

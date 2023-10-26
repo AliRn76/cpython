@@ -420,15 +420,15 @@ class A(object):
 
 class B(A):
     def m(self):
-        return "B" + super(B, self).m()
+        return "B" + super().m()
 
 class C(A):
     def m(self):
-        return "C" + super(C, self).m()
+        return "C" + super().m()
 
 class D(C, B):
     def m(self):
-        return "D" + super(D, self).m()
+        return "D" + super().m()
 
 
 test_7 = """

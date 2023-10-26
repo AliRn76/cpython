@@ -73,12 +73,12 @@ class BaseTest:
         # module than warnings.catch_warnings(). Otherwise,
         # warnings.catch_warnings() will be unable to remove the added filter.
         unittest.case.warnings = self.module
-        super(BaseTest, self).setUp()
+        super().setUp()
 
     def tearDown(self):
         sys.modules['warnings'] = original_warnings
         unittest.case.warnings = self.old_unittest_module
-        super(BaseTest, self).tearDown()
+        super().tearDown()
 
 class PublicAPITests(BaseTest):
 

@@ -89,7 +89,7 @@ class DummyDTPHandler(asynchat.async_chat):
             self.baseclass.next_data = None
         if not what:
             return self.close_when_done()
-        super(DummyDTPHandler, self).push(what.encode(self.encoding))
+        super().push(what.encode(self.encoding))
 
     def handle_error(self):
         default_error_handler()
@@ -380,7 +380,7 @@ if ssl is not None:
                 pass
             self._ssl_closing = False
             if getattr(self, '_ccc', False) is False:
-                super(SSLConnection, self).close()
+                super().close()
             else:
                 pass
 
@@ -390,7 +390,7 @@ if ssl is not None:
             elif self._ssl_closing:
                 self._do_ssl_shutdown()
             else:
-                super(SSLConnection, self).handle_read_event()
+                super().handle_read_event()
 
         def handle_write_event(self):
             if self._ssl_accepting:
@@ -398,11 +398,11 @@ if ssl is not None:
             elif self._ssl_closing:
                 self._do_ssl_shutdown()
             else:
-                super(SSLConnection, self).handle_write_event()
+                super().handle_write_event()
 
         def send(self, data):
             try:
-                return super(SSLConnection, self).send(data)
+                return super().send(data)
             except ssl.SSLError as err:
                 if err.args[0] in (ssl.SSL_ERROR_EOF, ssl.SSL_ERROR_ZERO_RETURN,
                                    ssl.SSL_ERROR_WANT_READ,
@@ -412,7 +412,7 @@ if ssl is not None:
 
         def recv(self, buffer_size):
             try:
-                return super(SSLConnection, self).recv(buffer_size)
+                return super().recv(buffer_size)
             except ssl.SSLError as err:
                 if err.args[0] in (ssl.SSL_ERROR_WANT_READ,
                                    ssl.SSL_ERROR_WANT_WRITE):
@@ -430,7 +430,7 @@ if ssl is not None:
                     self.socket._sslobj is not None):
                 self._do_ssl_shutdown()
             else:
-                super(SSLConnection, self).close()
+                super().close()
 
 
     class DummyTLS_DTPHandler(SSLConnection, DummyDTPHandler):

@@ -107,7 +107,7 @@ class EmitVisitor(asdl.VisitorBase):
     def __init__(self, file, metadata = None):
         self.file = file
         self._metadata = metadata
-        super(EmitVisitor, self).__init__()
+        super().__init__()
 
     def emit(self, s, depth, reflow=True):
         # XXX reflow long lines?

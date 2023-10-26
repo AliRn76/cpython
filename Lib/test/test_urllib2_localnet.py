@@ -286,7 +286,7 @@ class BasicAuthTests(unittest.TestCase):
     REALM = "Test"
 
     def setUp(self):
-        super(BasicAuthTests, self).setUp()
+        super().setUp()
         # With Basic Authentication
         def http_server_with_basic_auth_handler(*args, **kwargs):
             return BasicAuthHandler(*args, **kwargs)
@@ -301,7 +301,7 @@ class BasicAuthTests(unittest.TestCase):
         self.server = None
 
     def tearDown(self):
-        super(BasicAuthTests, self).tearDown()
+        super().tearDown()
 
     def test_basic_auth_success(self):
         ah = urllib.request.HTTPBasicAuthHandler()
@@ -328,7 +328,7 @@ class ProxyAuthTests(unittest.TestCase):
     REALM = "TestRealm"
 
     def setUp(self):
-        super(ProxyAuthTests, self).setUp()
+        super().setUp()
         # Ignore proxy bypass settings in the environment.
         def restore_environ(old_environ):
             os.environ.clear()
@@ -450,7 +450,7 @@ class TestUrlopen(unittest.TestCase):
     """
 
     def setUp(self):
-        super(TestUrlopen, self).setUp()
+        super().setUp()
 
         # clear _opener global variable
         self.addCleanup(urllib.request.urlcleanup)

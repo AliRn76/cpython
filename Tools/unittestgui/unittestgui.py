@@ -169,11 +169,11 @@ class GUITestResult(unittest.TestResult):
         self.callback.notifyTestFailed(test, err)
 
     def addSkip(self, test, reason):
-        super(GUITestResult,self).addSkip(test, reason)
+        super().addSkip(test, reason)
         self.callback.notifyTestSkipped(test, reason)
 
     def addExpectedFailure(self, test, err):
-        super(GUITestResult,self).addExpectedFailure(test, err)
+        super().addExpectedFailure(test, err)
         self.callback.notifyTestFailedExpectedly(test, err)
 
     def stopTest(self, test):
@@ -394,11 +394,11 @@ class TkTestRunner(BaseGUITestRunner):
         self.errorInfo.append((test,err))
 
     def notifyTestSkipped(self, test, reason):
-        super(TkTestRunner, self).notifyTestSkipped(test, reason)
+        super().notifyTestSkipped(test, reason)
         self.skipCountVar.set(1 + self.skipCountVar.get())
 
     def notifyTestFailedExpectedly(self, test, err):
-        super(TkTestRunner, self).notifyTestFailedExpectedly(test, err)
+        super().notifyTestFailedExpectedly(test, err)
         self.expectFailCountVar.set(1 + self.expectFailCountVar.get())
 
 

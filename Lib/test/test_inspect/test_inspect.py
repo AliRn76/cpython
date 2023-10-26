@@ -2020,22 +2020,22 @@ class TestGetcallargsMethods(TestGetcallargsFunctions):
 
     def makeCallable(self, signature):
         assert 'self' not in signature
-        mk = super(TestGetcallargsMethods, self).makeCallable
+        mk = super().makeCallable
         self.cls.method = mk('self, ' + signature)
         return self.inst.method
 
 class TestGetcallargsUnboundMethods(TestGetcallargsMethods):
 
     def makeCallable(self, signature):
-        super(TestGetcallargsUnboundMethods, self).makeCallable(signature)
+        super().makeCallable(signature)
         return self.cls.method
 
     def assertEqualCallArgs(self, func, call_params_string, locs=None):
-        return super(TestGetcallargsUnboundMethods, self).assertEqualCallArgs(
+        return super().assertEqualCallArgs(
             *self._getAssertEqualParams(func, call_params_string, locs))
 
     def assertEqualException(self, func, call_params_string, locs=None):
-        return super(TestGetcallargsUnboundMethods, self).assertEqualException(
+        return super().assertEqualException(
             *self._getAssertEqualParams(func, call_params_string, locs))
 
     def _getAssertEqualParams(self, func, call_params_string, locs=None):

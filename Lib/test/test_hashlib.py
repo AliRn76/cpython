@@ -189,7 +189,7 @@ class HashLibTestCase(unittest.TestCase):
                 add_builtin_constructor('shake_128')
                 add_builtin_constructor('shake_256')
 
-        super(HashLibTestCase, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     @property
     def hash_constructors(self):

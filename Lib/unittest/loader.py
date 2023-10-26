@@ -24,11 +24,11 @@ class _FailedTest(case.TestCase):
 
     def __init__(self, method_name, exception):
         self._exception = exception
-        super(_FailedTest, self).__init__(method_name)
+        super().__init__(method_name)
 
     def __getattr__(self, name):
         if name != self._testMethodName:
-            return super(_FailedTest, self).__getattr__(name)
+            return super().__getattr__(name)
         def testFailure():
             raise self._exception
         return testFailure
@@ -72,7 +72,7 @@ class TestLoader(object):
     _top_level_dir = None
 
     def __init__(self):
-        super(TestLoader, self).__init__()
+        super().__init__()
         self.errors = []
         # Tracks packages which we have called into via load_tests, to
         # avoid infinite re-entrancy.

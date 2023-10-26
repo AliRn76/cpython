@@ -4521,7 +4521,7 @@ class RecvmsgSCTPStreamTest(RecvmsgTests, RecvmsgGenericStreamTests,
 
     def testRecvmsgEOF(self):
         try:
-            super(RecvmsgSCTPStreamTest, self).testRecvmsgEOF()
+            super().testRecvmsgEOF()
         except OSError as e:
             if e.errno != errno.ENOTCONN:
                 raise
@@ -4535,7 +4535,7 @@ class RecvmsgIntoSCTPStreamTest(RecvmsgIntoTests, RecvmsgGenericStreamTests,
 
     def testRecvmsgEOF(self):
         try:
-            super(RecvmsgIntoSCTPStreamTest, self).testRecvmsgEOF()
+            super().testRecvmsgEOF()
         except OSError as e:
             if e.errno != errno.ENOTCONN:
                 raise

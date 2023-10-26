@@ -84,7 +84,7 @@ class MaybeEncodingError(Exception):
     def __init__(self, exc, value):
         self.exc = repr(exc)
         self.value = repr(value)
-        super(MaybeEncodingError, self).__init__(self.exc, self.value)
+        super().__init__(self.exc, self.value)
 
     def __str__(self):
         return "Error sending result: '%s'. Reason: '%s'" % (self.value,

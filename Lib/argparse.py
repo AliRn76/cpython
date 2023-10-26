@@ -961,7 +961,7 @@ class _StoreAction(Action):
                              'true or store const may be more appropriate')
         if const is not None and nargs != OPTIONAL:
             raise ValueError('nargs must be %r to supply const' % OPTIONAL)
-        super(_StoreAction, self).__init__(
+        super().__init__(
             option_strings=option_strings,
             dest=dest,
             nargs=nargs,
@@ -987,7 +987,7 @@ class _StoreConstAction(Action):
                  required=False,
                  help=None,
                  metavar=None):
-        super(_StoreConstAction, self).__init__(
+        super().__init__(
             option_strings=option_strings,
             dest=dest,
             nargs=0,
@@ -1008,7 +1008,7 @@ class _StoreTrueAction(_StoreConstAction):
                  default=False,
                  required=False,
                  help=None):
-        super(_StoreTrueAction, self).__init__(
+        super().__init__(
             option_strings=option_strings,
             dest=dest,
             const=True,
@@ -1025,7 +1025,7 @@ class _StoreFalseAction(_StoreConstAction):
                  default=True,
                  required=False,
                  help=None):
-        super(_StoreFalseAction, self).__init__(
+        super().__init__(
             option_strings=option_strings,
             dest=dest,
             const=False,
@@ -1053,7 +1053,7 @@ class _AppendAction(Action):
                              'the append const action may be more appropriate')
         if const is not None and nargs != OPTIONAL:
             raise ValueError('nargs must be %r to supply const' % OPTIONAL)
-        super(_AppendAction, self).__init__(
+        super().__init__(
             option_strings=option_strings,
             dest=dest,
             nargs=nargs,
@@ -1082,7 +1082,7 @@ class _AppendConstAction(Action):
                  required=False,
                  help=None,
                  metavar=None):
-        super(_AppendConstAction, self).__init__(
+        super().__init__(
             option_strings=option_strings,
             dest=dest,
             nargs=0,
@@ -1107,7 +1107,7 @@ class _CountAction(Action):
                  default=None,
                  required=False,
                  help=None):
-        super(_CountAction, self).__init__(
+        super().__init__(
             option_strings=option_strings,
             dest=dest,
             nargs=0,
@@ -1129,7 +1129,7 @@ class _HelpAction(Action):
                  dest=SUPPRESS,
                  default=SUPPRESS,
                  help=None):
-        super(_HelpAction, self).__init__(
+        super().__init__(
             option_strings=option_strings,
             dest=dest,
             default=default,
@@ -1149,7 +1149,7 @@ class _VersionAction(Action):
                  dest=SUPPRESS,
                  default=SUPPRESS,
                  help="show program's version number and exit"):
-        super(_VersionAction, self).__init__(
+        super().__init__(
             option_strings=option_strings,
             dest=dest,
             default=default,
@@ -1193,7 +1193,7 @@ class _SubParsersAction(Action):
         self._name_parser_map = {}
         self._choices_actions = []
 
-        super(_SubParsersAction, self).__init__(
+        super().__init__(
             option_strings=option_strings,
             dest=dest,
             nargs=PARSER,
@@ -1360,7 +1360,7 @@ class _ActionsContainer(object):
                  prefix_chars,
                  argument_default,
                  conflict_handler):
-        super(_ActionsContainer, self).__init__()
+        super().__init__()
 
         self.description = description
         self.argument_default = argument_default
@@ -1673,7 +1673,7 @@ class _ArgumentGroup(_ActionsContainer):
         update('conflict_handler', container.conflict_handler)
         update('prefix_chars', container.prefix_chars)
         update('argument_default', container.argument_default)
-        super_init = super(_ArgumentGroup, self).__init__
+        super_init = super().__init__
         super_init(description=description, **kwargs)
 
         # group attributes
@@ -1690,12 +1690,12 @@ class _ArgumentGroup(_ActionsContainer):
         self._mutually_exclusive_groups = container._mutually_exclusive_groups
 
     def _add_action(self, action):
-        action = super(_ArgumentGroup, self)._add_action(action)
+        action = super()._add_action(action)
         self._group_actions.append(action)
         return action
 
     def _remove_action(self, action):
-        super(_ArgumentGroup, self)._remove_action(action)
+        super()._remove_action(action)
         self._group_actions.remove(action)
 
     def add_argument_group(self, *args, **kwargs):
@@ -1711,7 +1711,7 @@ class _ArgumentGroup(_ActionsContainer):
 class _MutuallyExclusiveGroup(_ArgumentGroup):
 
     def __init__(self, container, required=False):
-        super(_MutuallyExclusiveGroup, self).__init__(container)
+        super().__init__(container)
         self.required = required
         self._container = container
 
@@ -1774,7 +1774,7 @@ class ArgumentParser(_AttributeHolder, _ActionsContainer):
                  allow_abbrev=True,
                  exit_on_error=True):
 
-        superinit = super(ArgumentParser, self).__init__
+        superinit = super().__init__
         superinit(description=description,
                   prefix_chars=prefix_chars,
                   argument_default=argument_default,

@@ -2303,7 +2303,7 @@ class TestSingleDispatch(unittest.TestCase):
 
         class TracingDict(UserDict):
             def __init__(self, *args, **kwargs):
-                super(TracingDict, self).__init__(*args, **kwargs)
+                super().__init__(*args, **kwargs)
                 self.set_ops = []
                 self.get_ops = []
             def __getitem__(self, key):

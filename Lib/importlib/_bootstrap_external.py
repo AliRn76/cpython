@@ -1186,7 +1186,7 @@ class FileLoader:
         # The only reason for this method is for the name check.
         # Issue #14857: Avoid the zero-argument form of super so the implementation
         # of that form can be updated without breaking the frozen module.
-        return super(FileLoader, self).load_module(fullname)
+        return super().load_module(fullname)
 
     @_check_name
     def get_filename(self, fullname):

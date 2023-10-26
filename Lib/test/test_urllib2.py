@@ -489,7 +489,7 @@ class MockHTTPHandler(urllib.request.HTTPHandler):
     # Very simple mock HTTP handler with no special behavior other than using a mock HTTP connection
 
     def __init__(self, debuglevel=None):
-        super(MockHTTPHandler, self).__init__(debuglevel=debuglevel)
+        super().__init__(debuglevel=debuglevel)
         self.httpconn = MockHTTPClass()
 
     def http_open(self, req):
@@ -530,7 +530,7 @@ if hasattr(http.client, 'HTTPSConnection'):
         # properties of httpcon
 
         def __init__(self, debuglevel=None, context=None, check_hostname=None):
-            super(MockHTTPSHandler, self).__init__(debuglevel, context, check_hostname)
+            super().__init__(debuglevel, context, check_hostname)
             self.httpconn = MockHTTPClass()
 
         def https_open(self, req):

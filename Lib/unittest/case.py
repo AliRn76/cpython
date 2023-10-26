@@ -1374,7 +1374,7 @@ class FunctionTestCase(TestCase):
     """
 
     def __init__(self, testFunc, setUp=None, tearDown=None, description=None):
-        super(FunctionTestCase, self).__init__()
+        super().__init__()
         self._setUpFunc = setUp
         self._tearDownFunc = tearDown
         self._testFunc = testFunc

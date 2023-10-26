@@ -832,7 +832,7 @@ class SimSMTPChannel(smtpd.SMTPChannel):
         self._extrafeatures = ''.join(
             [ "250-{0}\r\n".format(x) for x in extra_features ])
         self.all_received_lines = []
-        super(SimSMTPChannel, self).__init__(*args, **kw)
+        super().__init__(*args, **kw)
 
     # AUTH related stuff.  It would be nice if support for this were in smtpd.
     def found_terminator(self):
@@ -968,7 +968,7 @@ class SimSMTPChannel(smtpd.SMTPChannel):
 
     def smtp_QUIT(self, arg):
         if self.quit_response is None:
-            super(SimSMTPChannel, self).smtp_QUIT(arg)
+            super().smtp_QUIT(arg)
         else:
             self.push(self.quit_response)
             self.close_when_done()

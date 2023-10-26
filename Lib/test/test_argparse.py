@@ -172,15 +172,15 @@ def stderr_to_parser_error(parse_args, *args, **kwargs):
 class ErrorRaisingArgumentParser(argparse.ArgumentParser):
 
     def parse_args(self, *args, **kwargs):
-        parse_args = super(ErrorRaisingArgumentParser, self).parse_args
+        parse_args = super().parse_args
         return stderr_to_parser_error(parse_args, *args, **kwargs)
 
     def exit(self, *args, **kwargs):
-        exit = super(ErrorRaisingArgumentParser, self).exit
+        exit = super().exit
         return stderr_to_parser_error(exit, *args, **kwargs)
 
     def error(self, *args, **kwargs):
-        error = super(ErrorRaisingArgumentParser, self).error
+        error = super().error
         return stderr_to_parser_error(error, *args, **kwargs)
 
 
@@ -1616,7 +1616,7 @@ class TestArgumentsFromFile(TempDirMixin, ParserTestCase):
     """Test reading arguments from a file"""
 
     def setUp(self):
-        super(TestArgumentsFromFile, self).setUp()
+        super().setUp()
         file_texts = [
             ('hello', os.fsencode(self.hello) + b'\n'),
             ('recursive', b'-a\n'
@@ -1661,7 +1661,7 @@ class TestArgumentsFromFileConverter(TempDirMixin, ParserTestCase):
     """Test reading arguments from a file"""
 
     def setUp(self):
-        super(TestArgumentsFromFileConverter, self).setUp()
+        super().setUp()
         file_texts = [
             ('hello', b'hello world!\n'),
         ]
@@ -1770,7 +1770,7 @@ class TestFileTypeR(TempDirMixin, ParserTestCase):
     """Test the FileType option/argument type for reading files"""
 
     def setUp(self):
-        super(TestFileTypeR, self).setUp()
+        super().setUp()
         for file_name in ['foo', 'bar']:
             with open(os.path.join(self.temp_dir, file_name),
                       'w', encoding="utf-8") as file:
@@ -1793,7 +1793,7 @@ class TestFileTypeR(TempDirMixin, ParserTestCase):
 class TestFileTypeDefaults(TempDirMixin, ParserTestCase):
     """Test that a file is not created unless the default is needed"""
     def setUp(self):
-        super(TestFileTypeDefaults, self).setUp()
+        super().setUp()
         file = open(os.path.join(self.temp_dir, 'good'), 'w', encoding="utf-8")
         file.write('good')
         file.close()
@@ -1811,7 +1811,7 @@ class TestFileTypeRB(TempDirMixin, ParserTestCase):
     """Test the FileType option/argument type for reading files"""
 
     def setUp(self):
-        super(TestFileTypeRB, self).setUp()
+        super().setUp()
         for file_name in ['foo', 'bar']:
             with open(os.path.join(self.temp_dir, file_name),
                       'w', encoding="utf-8") as file:
@@ -3262,7 +3262,7 @@ class TestMutuallyExclusiveNested(MEMixin, TestCase):
 class MEPBase(object):
 
     def get_parser(self, required=None):
-        parent = super(MEPBase, self).get_parser(required=required)
+        parent = super().get_parser(required=required)
         parser = ErrorRaisingArgumentParser(
             prog=parent.prog, add_help=False, parents=[parent])
         return parser

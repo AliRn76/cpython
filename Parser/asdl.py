@@ -146,7 +146,7 @@ class Check(VisitorBase):
     Errors are printed and accumulated.
     """
     def __init__(self):
-        super(Check, self).__init__()
+        super().__init__()
         self.cons = {}
         self.errors = 0
         self.types = {}

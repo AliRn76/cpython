@@ -29,7 +29,7 @@ HAS_USER_BASE = sysconfig._HAS_USER_BASE
 class TestSysConfig(unittest.TestCase):
 
     def setUp(self):
-        super(TestSysConfig, self).setUp()
+        super().setUp()
         self.sys_path = sys.path[:]
         # patching os.uname
         if hasattr(os, 'uname'):
@@ -78,7 +78,7 @@ class TestSysConfig(unittest.TestCase):
         for var in self._added_envvars:
             os.environ.pop(var, None)
 
-        super(TestSysConfig, self).tearDown()
+        super().tearDown()
 
     def _set_uname(self, uname):
         self._uname = os.uname_result(uname)

@@ -499,7 +499,7 @@ class NonCallableMock(Base):
         if kwargs:
             self.configure_mock(**kwargs)
 
-        _safe_super(NonCallableMock, self).__init__(
+        _safe_super().__init__(
             spec, wraps, name, spec_set, parent,
             _spec_state
         )
@@ -843,7 +843,7 @@ class NonCallableMock(Base):
 
         obj = self._mock_children.get(name, _missing)
         if name in self.__dict__:
-            _safe_super(NonCallableMock, self).__delattr__(name)
+            _safe_super().__delattr__(name)
         elif obj is _deleted:
             raise AttributeError(name)
         if obj is not _missing:
@@ -1143,7 +1143,7 @@ class CallableMixin(Base):
                  wraps=None, name=None, spec_set=None, parent=None,
                  _spec_state=None, _new_name='', _new_parent=None, **kwargs):
         self.__dict__['_mock_return_value'] = return_value
-        _safe_super(CallableMixin, self).__init__(
+        _safe_super().__init__(
             spec, wraps, name, spec_set, parent,
             _spec_state, _new_name, _new_parent, **kwargs
         )
@@ -2145,7 +2145,7 @@ def _set_return_value(mock, method, name):
 class MagicMixin(Base):
     def __init__(self, /, *args, **kw):
         self._mock_set_magics()  # make magic work for kwargs in init
-        _safe_super(MagicMixin, self).__init__(*args, **kw)
+        _safe_super().__init__(*args, **kw)
         self._mock_set_magics()  # fix magic broken by upper level init
 
 
